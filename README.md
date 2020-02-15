@@ -1,5 +1,8 @@
 # Search-Engine
-simple search engine that uses Boolean and Vector search models. for uOttawa CSI 4107 class
+Simple search engine that uses Boolean and Vector search models. for uOttawa CSI 4107 class
+Implemented using python and using Flask as framework
+Can handle wildcards such as "manag*" (only for boolean)
+Does spell check
 
 STILL IN BETA AND NEEDS A LOT OF BUG FIXES
 
