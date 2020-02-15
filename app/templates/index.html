@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionnaire Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+/* Style the search field */
+form.search-bar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.search-bar input[type=submit] {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.search-bar input[type=submit]:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.search-bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+img {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+p {
+    font-weight:bold;
+}
+</style>
+
+<body>
+    <div class="logo">
+        <img src="../static/image.jpg" alt="logo">
+    </div>
+    <div class="search">
+        <form class="search-bar",  method="POST", action="/results">
+            <div class="bar">
+                <input type="text" placeholder="Search.." name="search">
+                <input type="submit"></button>
+            </div>
+            <div class="buttons">
+                <div class="search-model">
+                    <p>Please select search method</p>
+                    <input type="radio" name="method" id="boolean" value="boolean">
+                    <label for="boolean">Boolean Search Module</label>
+                    <input type="radio" name="method" id="vector" value="vector">
+                    <label for="boolean">Vector Search Model</label>
+                </div>
+                <div class="search-collection">
+                    <p>Please select collection</p>
+                    <input type="radio" name="collection" id="uottawa" value="uottawa">
+                    <label for="uottawa">University of Ottawa</label>
+                    <input type="radio" name="collection" id="other" value="other">
+                    <label for="other">Coming Soon</label>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</body>
+</html>
