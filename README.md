@@ -1,9 +1,13 @@
-# CSI-4107-Search-Engine-Project
-# LUC-CYRIL BONNET 8234136
-# MELODY HABBOUCHE 8305782
+# Search-Engine
+Simple search engine that uses Boolean and Vector search models. for uOttawa CSI 4107 class
+Implemented using python and using Flask as framework
+Can handle wildcards such as "manag*" (only for boolean)
+Does spell check
+
+STILL IN BETA AND NEEDS A LOT OF BUG FIXES
 
 How to use:
--  make sure re, nltk, beautifulsoup, numpy, editdistance and flask are installed on your device
+-  make sure re, nltk, beautifulsoup, numpy and flask are installed on your device
 - run search_engine.py (in /app) and flask server will run automatically.
 - follow path to website
 
