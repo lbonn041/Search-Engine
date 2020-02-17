@@ -10,9 +10,8 @@ def infixToPostfix(infixexpr):
     prec["("] = 1
     opStack = []
     postfixList = []
-    tokenList = infixexpr.split()
 
-    for token in tokenList:
+    for token in infixexpr:
         if not ((token == "and") or (token == "or") or (token == "and_not") or (token == ")") or (token == "(")):
             postfixList.append(token)
         elif token == '(':
@@ -34,9 +33,9 @@ def infixToPostfix(infixexpr):
 
 def postfixEval(postfixExpr, index, corpus):
     operandStack = []
-    tokenList = postfixExpr.split()
+    infixexpr = postfixExpr.split()
 
-    for token in tokenList:
+    for token in infixexpr:
         if not ((token == "and") or (token == "or") or (token == "and_not")):
             operandStack += [token]
         else:
@@ -60,17 +59,20 @@ def get_docIDs(word, index):
     documentIDs = []
     if type(word) == list:
         return word
-    elif '*' in word:
-        word_split = word.split("*")
-        for key in index:
-            if bool(re.match(word_split[0]+'(.+?)'+word_split[1], key)):
-                for key in index[key]:
-                    documentIDs += [int(key)]
-        return documentIDs
-    else:
-        for key in index[word]:
-            documentIDs += [int(key)]
-        return documentIDs
+    try :
+        if '*' in word:
+            word_split = word.split("*")
+            for key in index:
+                if bool(re.match(word_split[0]+'(.+?)'+word_split[1], key)):
+                    for key in index[key]:
+                        documentIDs += [int(key)]
+            return documentIDs
+        else:
+            for key in index[word]:
+                documentIDs += [int(key)]
+            return documentIDs
+    except:
+        return []
 
 
 def and_query(op1, op2, index):
@@ -114,8 +116,8 @@ def and_not_query(op1, op2, index, corpus):
     return answer
 
 def boolean_search(query, index, corpus):
-    if len(query.split()) == 1:
-        return get_docIDs(query, index)
+    if len(query) == 1:
+        return get_docIDs(query[0], index)
     else:
         query = infixToPostfix(query)
         return postfixEval(query, index, corpus)

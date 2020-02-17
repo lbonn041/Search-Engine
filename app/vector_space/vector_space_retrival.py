@@ -1,9 +1,10 @@
+#https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
+
 import json
 import numpy as np
 from math import sqrt
 
 def get_score_query(query, index, N):
-    query = query.split(" ")
     result = {}
     for i in range(1,N+1):
         documentID = str(i)
@@ -25,7 +26,6 @@ def get_score_query(query, index, N):
     return result
 
 def get_ranking(weightedDict,k):
-    #https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
     sortedDict = {k: v for k, v in sorted(weightedDict.items(), key=lambda item: item[1], reverse = True)}
     return list((sortedDict.keys()))[:k]
 

@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Results</title>
+    <title>Results for {{ query }}</title>
 </head>
+<style>
+*{
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+</style>
 <body>
-    {% for document in results %}
-        <h1>{{ document.title }}</h1>
-        <p>{{ document.description }}</p>
-    {% endfor %}
+    <h1>Results for "{{query}}"</h1>
+    {% if results == [] %}
+        <h3>No documents found, try a different query</h3>
+    {% else %}
+        {% for document in results %}
+            <h3>{{ document.title }}</h3>
+            <p>{{ document.description }}</p>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

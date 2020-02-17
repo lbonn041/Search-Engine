@@ -1,7 +1,7 @@
 import json
 import re
 
-with open('corpora/json_corpus.txt', 'r') as tokens:
+with open('app/corpora/json_corpus.txt', 'r') as tokens:
     data = json.load(tokens)
 
 def create_word_bigram(word):

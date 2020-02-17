@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 lemmatizer = WordNetLemmatizer()
 
-with open("corpora/backup.html", encoding='utf-8') as fp:
+with open("app/corpora/backup.html", encoding='utf-8') as fp:
     soup = BeautifulSoup(fp, "html.parser")
 
 
@@ -70,9 +70,9 @@ def initialze_corpus(soup):
             corpus_tokenized.append(tempDictToken)
             counter = counter + 1
 
-    with open('corpora/json_corpus.txt', 'w') as outfile1:
+    with open('app/corpora/json_corpus.txt', 'w') as outfile1:
         json.dump(corpus_tokenized, outfile1, indent=4, separators=(',', ': '))
-    with open('corpora/uottawa.txt', 'w') as outfile2:
+    with open('app/corpora/uottawa.txt', 'w') as outfile2:
         json.dump(corpus, outfile2, indent=4, separators=(',', ': '))
 
 
