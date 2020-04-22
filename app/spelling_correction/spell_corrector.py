@@ -3,8 +3,8 @@ import numpy as np
 import editdistance as ed
 
 
-with open('app/corpora/json_corpus.txt', 'r') as tokens:
-    data = json.load(tokens)
+# with open('app/corpora/json_corpus.txt', 'r') as tokens:
+#     data = json.load(tokens)
 
 def get_all_words(corpus):
     other = ['(', ')', 'and', 'or', 'and_not']

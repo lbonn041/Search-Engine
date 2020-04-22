@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visionnaire Search</title>
+    <title>Visionnaire Search - The Web is your vision!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type= 'text/javascript', scr= "../static/index.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
 </head>
+<script>
+
+    $(window).keypress(function (e) {
+            if (e.key === ' ' || e.key === 'Spacebar') {
+                // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+                //e.preventDefault()
+                var query = document.getElementById("myInput").value
+                console.log(query)
+                $.post('/autocomplete',{"query":query})
+            }            
+        });
+
+</script>
 <style>
 * {
   box-sizing: border-box;
@@ -36,6 +53,7 @@ form.search-bar input[type=submit] {
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
+  position: relative;
 }
 
 form.search-bar input[type=submit]:hover {
@@ -60,33 +78,40 @@ p {
 </style>
 
 <body>
-    <div class="logo">
-        <img src="../static/photo.jpg" alt="logo">
-    </div>
-    <div class="search">
-        <form class="search-bar",  method="POST", action="/results">
-            <div class="bar">
-                <input type="text" placeholder="Search.." name="search">
+    <div class="container">
+        <div class="logo">
+            <img src="../static/photo.jpg" alt="logo">
+        </div>
+        <div class="search">
+            <form class="search-bar",  method="POST", action="/results", autocomplete="off">
+                <div class="bar">
+                    <input id='myInput', type="text" placeholder="Search.." name="search">
+                </div>
                 <input type="submit"></button>
-            </div>
-            <div class="buttons">
-                <div class="search-model">
-                    <p>Please select search method</p>
-                    <input type="radio" name="method" id="boolean" value="boolean">
-                    <label for="boolean">Boolean Search Module</label>
-                    <input type="radio" name="method" id="vector" value="vector">
-                    <label for="boolean">Vector Search Model</label>
+                <div class="buttons">
+                    <div class="search-model">
+                        <p>Please select search method</p>
+                        <input type="radio" name="method" id="boolean" value="boolean">
+                        <label for="boolean">Boolean Search Module</label>
+                        <input type="radio" name="method" id="vector" value="vector">
+                        <label for="boolean">Vector Search Model</label>
+                    </div>
+                    <div class="search-collection">
+                        <p>Please select collection</p>
+                        <input type="radio" name="collection" id="uottawa" value="uottawa">
+                        <label for="uottawa">University of Ottawa</label>
+                        <input type="radio" name="collection" id="reuters" value="reuters">
+                        <label for="reuters">Reuters</label>
+                    </div>
+                    <div class="query-exp">
+                        <br>
+                        <input type="checkbox" name="exp" id="exp" value=1>
+                        <label for="exp">Click to enable query expansion</label>
+                    </div>
+                    
                 </div>
-                <div class="search-collection">
-                    <p>Please select collection</p>
-                    <input type="radio" name="collection" id="uottawa" value="uottawa">
-                    <label for="uottawa">University of Ottawa</label>
-                    <input type="radio" name="collection" id="other" value="other">
-                    <label for="other">Coming Soon</label>
-                </div>
-                
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </body>
 </html>

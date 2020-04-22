@@ -3,8 +3,14 @@
 # MELODY HABBOUCHE 8305782
 
 How to use:
--  make sure re, nltk, beautifulsoup, numpy, editdistance and flask are installed on your device
-- run search_engine.py (in /app) and flask server will run automatically.
+-  make sure regex, nltk, beautifulsoup, numpy, editdistance and flask are installed on your device
+  
+  `pip install beautifulsoup4 regex numpy editdistance flask`
+
+move to the CSI-4107-Search-Engine-Project directory
+`cd CSI-4107-Search-Engine-Project`
+
+run `python3 app/search_engine.py` and flask server will run automatically.
 - follow path to website
 
 Types of queries:

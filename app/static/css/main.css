@@ -1,0 +1,11 @@
+.container {
+    width: 90%;
+    padding: 1em;
+    margin: auto;
+    margin-left: 20px;
+    position: relative;
+  }
+
+  .uk-card {
+      width: 100%;
+  }

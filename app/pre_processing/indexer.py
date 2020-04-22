@@ -1,8 +1,5 @@
 import json
 
-with open('app/corpora/json_corpus.txt', 'r') as tokens:
-    data = json.load(tokens)
-
 inverted_index = {}
 
 
@@ -39,7 +36,5 @@ def create_index():
     for doc in inverted_index:
         inverted_index[doc] = convert_array(inverted_index[doc])
     
-    with open('app/corpora/inverted_index.txt', 'w') as outfile:
+    with open('/Users/luc/Documents/GitHub/CSI-4107-Search-Engine-Project/app/corpora/inverted_index_uottawa.txt', 'w') as outfile:
         json.dump(inverted_index, outfile, indent=4, separators=(',', ': '))
-
-#create_index()

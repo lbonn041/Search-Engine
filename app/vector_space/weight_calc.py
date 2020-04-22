@@ -4,41 +4,29 @@ import numpy as np
 from math import log10
 
 
-with open('app/corpora/inverted_index.txt', 'r') as index:
-    inverted_index = json.load(index)
-    index.close()
-
-with open('app/corpora/json_corpus.txt', 'r') as index:
-    corpus = json.load(index)
-
-def get_document_frequency(word):
+def get_document_frequency(word, inverted_index):
     try:
         return len(inverted_index[word])
     except:
         return 0
 
 
-def get_tf(word, documentID):
+def get_tf(word, documentID, inverted_index):
     return inverted_index[word][str(documentID)]
 
-def get_tfidf(word, documentID):
+def get_tfidf(word, documentID, inverted_index, corpus):
     N = len(corpus)
-    idf =  log10(N/get_document_frequency(word))
+    idf =  log10(N/get_document_frequency(word, inverted_index))
 
-    return idf * get_tf(word,documentID)
+    return idf * get_tf(word, documentID, inverted_index)
 
-def calculate_weight():
+def calculate_weight(inverted_index, corpus):
     for word in inverted_index:
         weight = {}
         for documentID, value in inverted_index[word].items():
-            value = get_tfidf(word, documentID)
+            value = get_tfidf(word, documentID, inverted_index, corpus)
             weight[documentID] = value
         inverted_index[word] = weight
 
-        
+    return inverted_index
 
-    with open('app/corpora/inverted_index.txt', 'w') as index:
-        json.dump(inverted_index, index, indent=4, separators=(',', ': '))
-        index.close()
-
-#calculate_weight()

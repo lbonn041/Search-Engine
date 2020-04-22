@@ -1,12 +1,7 @@
 import json
 
-with open('app/corpora/inverted_index.txt', 'r') as index:
-    inverted_index = json.load(index)
 
-with open('app/corpora/uottawa.txt', 'r') as index:
-    corpus = json.load(index)
-
-def convert_doc_ids(doc_id_list):
+def convert_doc_ids(doc_id_list, corpus):
     documents = []
     for documentID in doc_id_list:
         title = corpus[int(documentID) - 1]["title"]
@@ -17,3 +12,19 @@ def convert_doc_ids(doc_id_list):
         }
         documents.append(document)
     return documents
+
+
+def convert_doc_ids_reuters(doc_id_list, corpus):
+    documents = []
+    for documentID in doc_id_list:
+        title = corpus[int(documentID) - 1]["title"]
+        desc = corpus[int(documentID) - 1]["description"]
+        topic = corpus[int(documentID) - 1]["topic"]
+        document = {
+            "title": title,
+            "description": desc,
+            "topic": topic
+        }
+        documents.append(document)
+    return documents
+

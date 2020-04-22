@@ -6,9 +6,9 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from bs4 import BeautifulSoup
 
 lemmatizer = WordNetLemmatizer()
-
-with open("app/corpora/backup.html", encoding='utf-8') as fp:
-    soup = BeautifulSoup(fp, "html.parser")
+def createSoup():
+    with open("app/corpora/backup.html", encoding='utf-8') as fp:
+        soup = BeautifulSoup(fp, "html.parser")
 
 
 def remove_stopwords(token_array):
@@ -74,6 +74,3 @@ def initialze_corpus(soup):
         json.dump(corpus_tokenized, outfile1, indent=4, separators=(',', ': '))
     with open('app/corpora/uottawa.txt', 'w') as outfile2:
         json.dump(corpus, outfile2, indent=4, separators=(',', ': '))
-
-
-initialze_corpus(soup)
