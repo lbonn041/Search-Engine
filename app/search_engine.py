@@ -1,12 +1,10 @@
 ######
 #   LUC-CYRIL BONNET 8234136
-#   MELODY HABBOUCHE 8305782
 #
 #   LIST OF SOURCES USED:
 #   https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
 #   https://codereview.stackexchange.com/questions/223772/python-calculator-using-postfix-expressions
 #   Intersect algorithm from lecture notes
-#
 #
 ######
 
